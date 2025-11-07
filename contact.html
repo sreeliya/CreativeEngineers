@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contact Creative Engineers — get quotes, inquiries or project discussions for ETP, STP and RO plants.">
+  <title>Contact Us | Creative Engineers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-blue-900 text-white shadow">
+    <div class="container mx-auto flex justify-between items-center px-6 py-4">
+      <h1 class="text-2xl font-bold">Creative Engineers</h1>
+      <nav class="space-x-6 text-lg">
+        <a href="index.html" class="hover:text-gray-200">Home</a>
+        <a href="services.html" class="hover:text-gray-200">Services</a>
+        <a href="projects.html" class="hover:text-gray-200">Projects</a>
+        <a href="about.html" class="hover:text-gray-200">About</a>
+        <a href="testimonials.html" class="hover:text-gray-200">Clients</a>
+        <a href="contact.html" class="hover:text-gray-200">Contact</a>
+        <a href="login.html" class="hover:text-gray-200">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contact Form -->
+  <section class="py-16 px-6">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
+      
+      <!-- Left Info -->
+      <div>
+        <h1 class="text-4xl font-bold text-blue-900 mb-4">Get in Touch</h1>
+        <p class="text-gray-600 mb-6">
+          Reach out for inquiries, quotes, or project discussions. We’ll get back to you promptly.
+        </p>
+        <p class="mb-2"><strong>Address:</strong> Katpadi, Vellore, Tamil Nadu</p>
+        <p class="mb-2"><strong>Phone:</strong> +91-9876543210</p>
+        <p><strong>Email:</strong> creativeengineers@gmail.com</p>
+      </div>
+
+      <!-- Right Form -->
+      <form class="bg-white p-8 shadow rounded-xl" method="post" action="#" aria-label="Contact form">
+        <label class="sr-only" for="name">Your Name</label>
+        <input id="name" name="name" type="text" placeholder="Your Name" class="w-full mb-4 border p-3 rounded" required>
+
+        <label class="sr-only" for="email">Email Address</label>
+        <input id="email" name="email" type="email" placeholder="Email Address" class="w-full mb-4 border p-3 rounded" required>
+
+        <label class="sr-only" for="message">Your Message</label>
+        <textarea id="message" name="message" rows="4" placeholder="Your Message" class="w-full mb-4 border p-3 rounded" required></textarea>
+
+        <button type="submit" class="bg-blue-900 text-white px-6 py-2 rounded hover:bg-blue-800">Send Message</button>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- Google Map Embed -->
+  <section class="mt-10">
+    <iframe 
+      src="https://www.google.com/maps?q=Vellore%2C%20Tamil%20Nadu&output=embed"
+      class="w-full h-80 border-0"></iframe>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-6 text-center mt-16">
+    <p>© 2025 Creative Engineers, Vellore. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

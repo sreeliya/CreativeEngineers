@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Services — ETP, STP, RO and related water treatment services by Creative Engineers.">
+  <title>Services | Creative Engineers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <header class="bg-blue-900 text-white shadow">
+    <div class="container mx-auto flex justify-between items-center px-6 py-4">
+      <h1 class="text-2xl font-bold">Creative Engineers</h1>
+      <nav class="space-x-6 text-lg">
+        <a href="index.html" class="hover:text-gray-200">Home</a>
+        <a href="services.html" class="hover:text-gray-200">Services</a>
+        <a href="projects.html" class="hover:text-gray-200">Projects</a>
+        <a href="about.html" class="hover:text-gray-200">About</a>
+        <a href="testimonials.html" class="hover:text-gray-200">Clients</a>
+        <a href="contact.html" class="hover:text-gray-200">Contact</a>
+        <a href="login.html" class="hover:text-gray-200">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="text-center py-16">
+      <h1 class="text-4xl font-bold mb-6 text-blue-900">Our Services</h1>
+      <p class="max-w-3xl mx-auto text-gray-600">We offer complete solutions for ETP, STP, RO and related water treatment services — design, supply, erection and commissioning.</p>
+    </section>
+
+    <section class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6 pb-20">
+      <div class="bg-white shadow p-6 rounded-xl text-center service-card cursor-pointer" role="button" tabindex="0" data-service="etp">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop" alt="ETP plant" class="mx-auto mb-4 rounded h-40 w-full object-cover">
+        <h3 class="text-xl font-semibold mb-2">ETP Plants</h3>
+        <p>Design and implementation of effluent treatment systems for industrial wastewater compliance.</p>
+      </div>
+      <div class="bg-white shadow p-6 rounded-xl text-center service-card cursor-pointer" role="button" tabindex="0" data-service="stp">
+        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800&auto=format&fit=crop" alt="STP plant" class="mx-auto mb-4 rounded h-40 w-full object-cover">
+        <h3 class="text-xl font-semibold mb-2">STP Plants</h3>
+        <p>Reliable sewage treatment plants with options for biological and membrane systems.</p>
+      </div>
+      <div class="bg-white shadow p-6 rounded-xl text-center service-card cursor-pointer" role="button" tabindex="0" data-service="ro">
+  <!-- Local RO image (place your image at assets/images/ro.jpg) -->
+  <img src="assets/images/ro.jpg" alt="RO system" class="mx-auto mb-4 rounded h-40 w-full object-cover">
+        <h3 class="text-xl font-semibold mb-2">RO Systems</h3>
+        <p>High-recovery reverse osmosis systems for commercial and industrial uses.</p>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 pb-20">
+      <h2 class="text-3xl font-semibold text-blue-900 mb-6">Additional Services</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 shadow rounded-xl text-center service-card cursor-pointer" role="button" tabindex="0" data-service="dosing">
+          <img src="https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?q=80&w=800&auto=format&fit=crop" alt="Chemical dosing" class="mx-auto mb-4 rounded h-36 w-full object-cover">
+          <h4 class="font-semibold">Chemical Dosing Systems</h4>
+          <p class="text-gray-600">Custom chemical feed skids, metering pumps and dosing automation.</p>
+        </div>
+        <div class="bg-white p-6 shadow rounded-xl text-center service-card cursor-pointer" role="button" tabindex="0" data-service="package">
+          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=800&auto=format&fit=crop" alt="Package plant" class="mx-auto mb-4 rounded h-36 w-full object-cover">
+          <h4 class="font-semibold">Package Plants</h4>
+          <p class="text-gray-600">Compact, skid-mounted solutions for fast deployment and low footprint installations.</p>
+        </div>
+        <div class="bg-white p-6 shadow rounded-xl text-center service-card cursor-pointer" role="button" tabindex="0" data-service="amc">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop" alt="AMC and maintenance" class="mx-auto mb-4 rounded h-36 w-full object-cover">
+          <h4 class="font-semibold">AMC & Maintenance</h4>
+          <p class="text-gray-600">Annual maintenance contracts and on-site support for continuous operation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Price Calculator Section -->
+    <section class="bg-gray-50 py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <!-- Section Header -->
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-blue-900 mb-4">Service Price Calculator</h2>
+                    <p class="text-gray-600">Get an instant price estimate for our treatment plant services</p>
+                </div>
+
+                <!-- Calculator Form -->
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <form id="calculatorForm" class="space-y-6">
+                        <!-- Service Type -->
+                        <div>
+                            <label for="serviceType" class="block text-gray-700 font-medium mb-2">
+                                Select Service Type
+                            </label>
+                            <select id="serviceType" 
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <option value="">Choose a service...</option>
+                                <option value="etp">ETP Plant (Effluent Treatment)</option>
+                                <option value="stp">STP Plant (Sewage Treatment)</option>
+                                <option value="ro">RO System (Reverse Osmosis)</option>
+                                <option value="dosing">Chemical Dosing System</option>
+                                <option value="package">Package Plant</option>
+                                <option value="amc">AMC & Maintenance</option>
+                            </select>
+                        </div>
+
+                        <!-- Area/Input -->
+                        <div>
+                            <label for="area" class="block text-gray-700 font-medium mb-2">
+                                Area (Square Meters) or Units
+                            </label>
+                            <div class="relative">
+                                <input type="number" 
+                                       id="area" 
+                                       min="0"
+                                       step="1"
+                                       placeholder="Enter area or quantity"
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                        </div>
+
+                        <!-- Calculate Button -->
+                        <button type="submit" 
+                                class="w-full bg-blue-900 text-white py-3 px-6 rounded-lg hover:bg-blue-800 transition-colors">
+                            Calculate Price
+                        </button>
+
+                        <!-- Result Display -->
+                        <div id="resultBox" class="hidden">
+                            <div class="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                                <h3 class="text-lg font-semibold text-gray-800 mb-2">Price Estimate</h3>
+                                <div class="flex justify-between items-center">
+                                    <div class="space-y-2">
+                                        <p class="text-gray-600" id="serviceDetail">-</p>
+                                        <p class="text-gray-600" id="areaDetail">-</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="text-2xl font-bold text-blue-900" id="priceResult">₹0</p>
+                                        <p class="text-sm text-gray-500">*Estimated price</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-4 text-sm text-gray-500">
+                                * This is an approximate estimate. Final price may vary based on specific requirements and site conditions.
+                                Contact us for a detailed quote.
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const calculatorForm = document.getElementById('calculatorForm');
+                const resultBox = document.getElementById('resultBox');
+                const serviceDetail = document.getElementById('serviceDetail');
+                const areaDetail = document.getElementById('areaDetail');
+                const priceResult = document.getElementById('priceResult');
+
+                // Price rates per unit (can be easily modified)
+                const rates = {
+                    'etp': 2600,      // ETP Plant
+                    'stp': 3000,      // STP Plant
+                    'ro': 2200,       // RO System
+                    'dosing': 1800,   // Chemical Dosing System
+                    'package': 3200,  // Package Plant
+                    'amc': 1500       // AMC & Maintenance (per unit/year)
+                };
+
+                // Service type display names
+                const serviceNames = {
+                    'etp': 'ETP Plant (Effluent Treatment)',
+                    'stp': 'STP Plant (Sewage Treatment)',
+                    'ro': 'RO System (Reverse Osmosis)',
+                    'dosing': 'Chemical Dosing System',
+                    'package': 'Package Plant',
+                    'amc': 'AMC & Maintenance'
+                };
+
+                calculatorForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    const serviceType = document.getElementById('serviceType').value;
+                    const area = parseFloat(document.getElementById('area').value);
+
+                    // Validation
+                    if (!serviceType || !area) {
+                        alert('Please fill in all fields');
+                        return;
+                    }
+
+                    if (area <= 0) {
+                        alert('Please enter a valid area or quantity');
+                        return;
+                    }
+
+                    // Calculate price
+                    const ratePerUnit = rates[serviceType];
+                    const totalPrice = ratePerUnit * area;
+
+                    // Format price with Indian numbering system
+                    const formattedPrice = new Intl.NumberFormat('en-IN', {
+                        style: 'currency',
+                        currency: 'INR',
+                        maximumFractionDigits: 0
+                    }).format(totalPrice);
+
+                    // Update result display
+                    serviceDetail.textContent = `Service: ${serviceNames[serviceType]}`;
+                    areaDetail.textContent = `Area/Quantity: ${area}`;
+                    priceResult.textContent = formattedPrice;
+
+                    // Show result box with animation
+                    resultBox.classList.remove('hidden');
+                    resultBox.scrollIntoView({ behavior: 'smooth' });
+                });
+
+                // Optional: Real-time validation
+                document.getElementById('area').addEventListener('input', function(e) {
+                    if (e.target.value < 0) {
+                        e.target.value = 0;
+                    }
+                });
+            });
+        </script>
+    </section>
+
+    <!-- SERVICE DETAIL MODAL -->
+    <div id="serviceModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-6 hidden" aria-hidden="true">
+      <div class="bg-white rounded-lg shadow-xl max-w-3xl w-full overflow-auto" role="dialog" aria-modal="true" aria-labelledby="serviceModalTitle">
+        <div class="flex justify-between items-start p-6 border-b">
+          <h3 id="serviceModalTitle" class="text-2xl font-semibold text-blue-900">Service</h3>
+          <button id="modalClose" class="text-gray-500 hover:text-gray-800" aria-label="Close modal">✕</button>
+        </div>
+        <div id="serviceModalBody" class="p-6">
+          <!-- Filled dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-gray-900 text-gray-300 py-6 text-center mt-16">
+      <p>© 2025 Creative Engineers, Vellore. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // Service details data
+      const SERVICE_DATA = {
+        etp: {
+          title: 'ETP Plants',
+          img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop',
+          intro: 'Effluent Treatment Plants designed for industrial wastewater management and regulatory compliance.',
+          details: '<p>We provide complete ETP solutions including primary treatment, biological reactors, MBBR/activated sludge options, clarifiers, sludge handling and tertiary polishing. Our designs focus on reducing COD, BOD and TSS to meet discharge standards.</p><ul class="list-disc ml-5 mt-3 text-gray-700"><li>Site assessment and feasibility</li><li>Process design and automation</li><li>Supply, erection and commissioning</li><li>Performance guarantees and AMC</li></ul>'
+        },
+        stp: {
+          title: 'STP Plants',
+          img: 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop',
+          intro: 'Sewage Treatment Plants for residential and commercial reuse applications.',
+          details: '<p>Our STP packages include septic tank alternatives, SBR, MBR and conventional activated sludge systems tailored for capacity, reuse quality and energy efficiency.</p><ul class="list-disc ml-5 mt-3 text-gray-700"><li>Design for water reuse (flushing, landscaping)</li><li>Odour control and low-maintenance options</li><li>Skid-mounted package plants available</li></ul>'
+        },
+        ro: {
+  title: 'RO Systems',
+  img: 'assets/images/ro.jpg',
+        intro: 'Reverse Osmosis systems for high-quality water production.',
+        details: '<p>We design RO systems for industrial process water, boiler feed, and potable water applications. Offerings include pre-treatment (media filters, softeners, anti-scalants), high recovery RO, energy recovery for large systems and skid-mounted units.</p><ul class="list-disc ml-5 mt-3 text-gray-700"><li>Feed water analysis and pretreatment</li><li>Membrane selection and recovery optimization</li><li>PLC-based automation and SCADA integration</li></ul>'
+      },
+      dosing: {
+        title: 'Chemical Dosing Systems',
+        img: 'https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?q=80&w=1200&auto=format&fit=crop',
+        intro: 'Automated chemical dosing solutions for coagulation, pH control and disinfection.',
+        details: '<p>We supply metering pumps, dosing tanks, skid-mounted dosing panels and automation for precise chemical addition. Suitable for coagulation, pH adjustment, and disinfection processes.</p><ul class="list-disc ml-5 mt-3 text-gray-700"><li>Metering pump selection</li><li>Storage and dosing skid design</li><li>Integration with PLC for dosing control</li></ul>'
+      },
+      package: {
+        title: 'Package Plants',
+        img: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1200&auto=format&fit=crop',
+        intro: 'Compact, skid-mounted water treatment units for quick deployment.',
+        details: '<p>Package plants are pre-assembled, factory-tested units for water and wastewater treatment. Ideal when site footprint or schedule is constrained.</p><ul class="list-disc ml-5 mt-3 text-gray-700"><li>Skid-mounted, plug-and-play</li><li>Rapid installation and commissioning</li><li>Customizable capacities</li></ul>'
+      },
+      amc: {
+        title: 'AMC & Maintenance',
+        img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop',
+        intro: 'Annual maintenance contracts and on-site service to ensure continuous operation.',
+        details: '<p>Our AMC packages include periodic inspections, routine maintenance, spare parts supply and emergency breakdown support to keep plants running efficiently.</p><ul class="list-disc ml-5 mt-3 text-gray-700"><li>Scheduled preventive maintenance</li><li>Priority breakdown support</li><li>Spare parts and consumables supply</li></ul>'
+      }
+    };
+
+    const modal = document.getElementById('serviceModal');
+    const modalBody = document.getElementById('serviceModalBody');
+    const modalTitle = document.getElementById('serviceModalTitle');
+    const modalClose = document.getElementById('modalClose');
+
+    function openServiceModal(key){
+      const d = SERVICE_DATA[key];
+      if(!d) return;
+      modalTitle.textContent = d.title;
+      modalBody.innerHTML = `
+        <img src="${d.img}" alt="${d.title}" class="w-full h-56 object-cover rounded mb-4">
+        <p class="text-gray-700 font-medium">${d.intro}</p>
+        <div class="mt-4 text-gray-700">${d.details}</div>`;
+      modal.classList.remove('hidden');
+      modal.setAttribute('aria-hidden', 'false');
+      // Trap focus briefly by focusing close button
+      modalClose.focus();
+    }
+
+    function closeServiceModal(){
+      modal.classList.add('hidden');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    // Attach code to cards
+    document.querySelectorAll('.service-card').forEach(el => {
+      el.addEventListener('click', () => openServiceModal(el.dataset.service));
+      el.addEventListener('keypress', (e) => { if(e.key === 'Enter' || e.key === ' ') openServiceModal(el.dataset.service); });
+    });
+
+    modalClose.addEventListener('click', closeServiceModal);
+    modal.addEventListener('click', (e) => { if(e.target === modal) closeServiceModal(); });
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeServiceModal(); });
+  </script>
+
+</body>
+</html>

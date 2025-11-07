@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Results | Creative Engineers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .trusted-seal { color: #00796b; }
+    .rating-stars { color: #fbbf24; }
+    .response-rate { color: #00796b; font-size: 0.8rem; }
+    .member-badge { 
+      background: #f3f4f6;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Header with Navigation -->
+  <header class="bg-blue-900 text-white shadow">
+    <div class="container mx-auto flex justify-between items-center px-6 py-4">
+      <h1 class="text-2xl font-bold">Creative Engineers</h1>
+      <nav class="space-x-6 text-lg">
+        <a href="index.html" class="hover:text-gray-200">Home</a>
+        <a href="services.html" class="hover:text-gray-200">Services</a>
+        <a href="projects.html" class="hover:text-gray-200">Projects</a>
+        <a href="about.html" class="hover:text-gray-200">About</a>
+        <a href="testimonials.html" class="hover:text-gray-200">Clients</a>
+        <a href="contact.html" class="hover:text-gray-200">Contact</a>
+        <a href="login.html" class="hover:text-gray-200">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-6 py-8">
+    <!-- Search Header -->
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="text-2xl font-bold">Search Results</h1>
+      <div class="flex items-center gap-4">
+        <input type="text" 
+               id="searchInput" 
+               class="w-96 px-4 py-2 border rounded-lg" 
+               value="wastewater treatment plants services"
+               placeholder="Search services...">
+        <button onclick="performSearch()" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">
+          Search
+        </button>
+      </div>
+    </div>
+
+    <!-- City Selector -->
+    <div class="mb-6">
+      <h2 class="text-lg font-semibold mb-3">Services near:</h2>
+      <div class="flex gap-2">
+        <button class="bg-blue-900 text-white px-4 py-1 rounded-full text-sm">Vellore</button>
+        <button class="text-blue-900 hover:bg-gray-100 px-4 py-1 rounded-full text-sm">Chennai</button>
+        <button class="text-blue-900 hover:bg-gray-100 px-4 py-1 rounded-full text-sm">Bengaluru</button>
+        <button class="text-blue-900 hover:bg-gray-100 px-4 py-1 rounded-full text-sm">Mumbai</button>
+      </div>
+    </div>
+
+    <!-- Grid Layout -->
+    <div class="grid md:grid-cols-4 gap-8">
+      <!-- Filters Sidebar -->
+      <aside class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="font-semibold text-lg mb-4">Filters</h2>
+        
+        <!-- Service Type -->
+        <div class="mb-6">
+          <h3 class="font-medium mb-3">Service Type</h3>
+          <div class="space-y-2">
+            <label class="flex items-center gap-2">
+              <input type="checkbox" name="serviceType" value="wastewater" class="rounded text-blue-600" checked>
+              <span>Wastewater Treatment</span>
+            </label>
+            <label class="flex items-center gap-2">
+              <input type="checkbox" name="serviceType" value="water" class="rounded text-blue-600">
+              <span>Water Treatment</span>
+            </label>
+            <label class="flex items-center gap-2">
+              <input type="checkbox" name="serviceType" value="ro" class="rounded text-blue-600">
+              <span>RO Systems</span>
+            </label>
+            <label class="flex items-center gap-2">
+              <input type="checkbox" name="serviceType" value="chemical" class="rounded text-blue-600">
+              <span>Chemical Dosing</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Location -->
+        <div class="mb-6">
+          <h3 class="font-medium mb-3">Location</h3>
+          <select class="w-full border rounded p-2" id="locationFilter">
+            <option value="Vellore" selected>Vellore</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Bengaluru">Bengaluru</option>
+          </select>
+        </div>
+
+        <!-- Business Type -->
+        <div class="mb-6">
+          <h3 class="font-medium mb-3">Business Type</h3>
+          <div class="space-y-2">
+            <label class="flex items-center gap-2">
+              <input type="checkbox" name="businessType" value="manufacturer" class="rounded text-blue-600">
+              <span>Manufacturer</span>
+            </label>
+            <label class="flex items-center gap-2">
+              <input type="checkbox" name="businessType" value="service" class="rounded text-blue-600" checked>
+              <span>Service Provider</span>
+            </label>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Results -->
+      <div class="md:col-span-3" id="resultsContainer">
+        <div id="searchResults" class="space-y-4">
+          <!-- Result card 1 -->
+          <div class="bg-white p-4 rounded-lg shadow-md">
+            <div class="flex gap-4">
+              <div class="w-1/3">
+                <img src="https://5.imimg.com/data5/SELLER/Default/2023/3/YR/OG/PW/90183163/wastewater-treatment-plant-500x500.png" 
+                     alt="Wastewater Treatment Services" 
+                     class="w-full aspect-square object-cover rounded-lg">
+              </div>
+              <div class="w-2/3">
+                <h3 class="text-lg text-blue-600 hover:underline cursor-pointer">Wastewater Treatment Services</h3>
+                <div class="flex items-center gap-2 mt-2">
+                  <span class="text-yellow-400">★★★★★</span>
+                  <span class="text-sm text-gray-600">(5)</span>
+                  <span class="bg-green-50 text-green-700 text-xs px-2 py-0.5 rounded">TrustSEAL</span>
+                </div>
+                <p class="font-medium mt-2">S.K. Water Solutions</p>
+                <p class="text-sm text-gray-600 flex items-center mt-1">
+                  <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"/>
+                  </svg>
+                  Bengaluru, Lakshmipura
+                </p>
+                <div class="flex gap-2 mt-2">
+                  <span class="bg-gray-100 px-2 py-0.5 rounded text-xs">GST</span>
+                  <span class="bg-gray-100 px-2 py-0.5 rounded text-xs">Email</span>
+                  <span class="bg-gray-100 px-2 py-0.5 rounded text-xs">Mobile</span>
+                  <span class="text-gray-600 text-xs">Member: 7 yrs</span>
+                </div>
+                <div class="flex justify-between items-center mt-3">
+                  <span class="text-green-700 text-xs">73% Response Rate</span>
+                  <div class="flex gap-2">
+                    <button class="bg-green-600 text-white px-3 py-1.5 rounded text-sm hover:bg-green-700">
+                      Contact Supplier
+                    </button>
+                    <button class="text-blue-600 text-sm hover:underline flex items-center">
+                      <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                      </svg>
+                      View Number
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Result card 2 -->
+          <div class="bg-white p-4 rounded-lg shadow-md">
+            <div class="flex gap-4">
+              <div class="w-1/3">
+                <img src="https://5.imimg.com/data5/SELLER/Default/2022/8/SK/YK/CX/48675068/wastewater-treatment-plant-500x500.jpg" 
+                     alt="Wastewater Treatment Services" 
+                     class="w-full aspect-square object-cover rounded-lg">
+              </div>
+              <div class="w-2/3">
+                <h3 class="text-lg text-blue-600 hover:underline cursor-pointer">Wastewater Treatment Services, General Waste Disposal</h3>
+                <div class="flex items-center gap-2 mt-2">
+                  <span class="text-yellow-400">★★★★☆</span>
+                  <span class="text-sm text-gray-600">(2)</span>
+                  <span class="bg-green-50 text-green-700 text-xs px-2 py-0.5 rounded">TrustSEAL</span>
+                </div>
+                <p class="font-medium mt-2">Petropath Fluids (India) Private Limited</p>
+                <p class="text-sm text-gray-600 flex items-center mt-1">
+                  <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"/>
+                  </svg>
+                  Bengaluru, MICO Layout
+                </p>
+                <div class="flex gap-2 mt-2">
+                  <span class="bg-gray-100 px-2 py-0.5 rounded text-xs">GST</span>
+                  <span class="bg-gray-100 px-2 py-0.5 rounded text-xs">Email</span>
+                  <span class="bg-gray-100 px-2 py-0.5 rounded text-xs">Mobile</span>
+                  <span class="text-gray-600 text-xs">Member: 14 yrs</span>
+                </div>
+                <div class="flex justify-between items-center mt-3">
+                  <span class="text-green-700 text-xs">67% Response Rate</span>
+                  <div class="flex gap-2">
+                    <button class="bg-green-600 text-white px-3 py-1.5 rounded text-sm hover:bg-green-700">
+                      Contact Supplier
+                    </button>
+                    <button class="text-blue-600 text-sm hover:underline flex items-center">
+                      <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                      </svg>
+                      View Number
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Result card 3 -->
+          <div class="bg-white p-4 rounded-lg shadow-md">
+            <div class="flex gap-4">
+              <div class="w-1/3">
+                <img src="https://3.imimg.com/data3/QD/EY/MY-4090558/wastewater-treatment-plant-500x500.jpg" 
+                     alt="Wastewater Treatment Services" 
+                     class="w-full aspect-square object-cover rounded-lg">
+              </div>
+              <div class="w-2/3">
+                <h3 class="text-lg text-blue-600 hover:underline cursor-pointer">Wastewater Treatment Services</h3>
+                <div class="flex items-center gap-2 mt-2">
+                  <span class="text-yellow-400">★★★★★</span>
+                  <span class="text-sm text-gray-600">(1)</span>
+                </div>
+                <p class="font-medium mt-2">Exomars Technologies Private Limited</p>
+                <p class="text-sm text-gray-600 flex items-center mt-1">
+                  <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"/>
+                  </svg>
+                  Bengaluru, Bengaluru Urban
+                </p>
+                <div class="flex gap-2 mt-2">
+                  <span class="bg-gray-100 px-2 py-0.5 rounded text-xs">GST</span>
+                  <span class="bg-gray-100 px-2 py-0.5 rounded text-xs">Email</span>
+                  <span class="bg-gray-100 px-2 py-0.5 rounded text-xs">Mobile</span>
+                  <span class="text-gray-600 text-xs">Member: 1 yr</span>
+                </div>
+                <div class="flex justify-between items-center mt-3">
+                  <span class="text-green-700 text-xs">60% Response Rate</span>
+                  <div class="flex gap-2">
+                    <button class="bg-green-600 text-white px-3 py-1.5 rounded text-sm hover:bg-green-700">
+                      Contact Supplier
+                    </button>
+                    <button class="text-blue-600 text-sm hover:underline flex items-center">
+                      <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                      </svg>
+                      View Number
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-gray-900 text-gray-300 py-6 text-center mt-16">
+    <p>© 2025 Creative Engineers, Vellore. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Sample service data
+    const services = [
+      {
+        id: 1,
+        title: 'Wastewater Treatment Services',
+        type: 'wastewater',
+        businessType: 'service',
+        company: 'S.K. Water Solutions',
+        location: {
+          city: 'Bengaluru',
+          area: 'Lakshmipura'
+        },
+        rating: 5,
+        reviews: 1,
+        memberSince: '7 yrs',
+        responseRate: '73%',
+        image: 'https://5.imimg.com/data5/SELLER/Default/2023/3/YR/OG/PW/90183163/wastewater-treatment-plant-500x500.png',
+        gst: true,
+        email: true,
+        mobile: true,
+        trustSeal: true,
+        verifiedSupplier: true
+      },
+      {
+        id: 2,
+        title: 'Wastewater Treatment Services, General Waste Disposal',
+        type: 'wastewater',
+        businessType: 'service',
+        company: 'Petropath Fluids (India) Private Limited',
+        location: {
+          city: 'Bengaluru',
+          area: 'MICO Layout'
+        },
+        rating: 4,
+        reviews: 2,
+        memberSince: '14 yrs',
+        responseRate: '67%',
+        image: 'https://5.imimg.com/data5/SELLER/Default/2022/8/SK/YK/CX/48675068/wastewater-treatment-plant-500x500.jpg',
+        gst: true,
+        email: true,
+        mobile: true,
+        trustSeal: true,
+        verifiedSupplier: true
+      },
+      {
+        id: 3,
+        title: 'Wastewater Treatment Services',
+        type: 'wastewater',
+        businessType: 'service',
+        company: 'Exomars Technologies Private Limited',
+        location: {
+          city: 'Bengaluru',
+          area: 'Bengaluru Urban'
+        },
+        rating: 5,
+        reviews: 1,
+        memberSince: '1 yr',
+        responseRate: '60%',
+        image: 'https://3.imimg.com/data3/QD/EY/MY-4090558/wastewater-treatment-plant-500x500.jpg',
+        gst: true,
+        email: true,
+        mobile: true,
+        trustSeal: false,
+        verifiedSupplier: true
+      },
+      {
+        id: 4,
+        title: 'Wastewater Treatment Service',
+        type: 'wastewater',
+        businessType: 'service',
+        company: 'Water Techno Services',
+        location: {
+          city: 'Bengaluru',
+          area: ''
+        },
+        rating: 5,
+        reviews: 1,
+        memberSince: '5 yrs',
+        responseRate: '85%',
+        image: 'https://5.imimg.com/data5/SELLER/Default/2021/12/KG/VO/GS/3058006/waste-water-treatment-plant-500x500.jpg',
+        gst: true,
+        email: true,
+        mobile: true,
+        trustSeal: true,
+        verifiedSupplier: true
+      }
+    ];
+
+    // Create result card HTML
+    function createResultCard(service) {
+      const stars = '★'.repeat(service.rating) + '☆'.repeat(5 - service.rating);
+      
+      return `
+        <div class="bg-white rounded-lg shadow-md overflow-hidden p-4">
+          <div class="grid grid-cols-3 gap-4">
+            <div class="col-span-1">
+              <div class="relative">
+                <img src="${service.image}" alt="${service.title}" class="w-full aspect-square object-cover rounded-lg">
+              </div>
+            </div>
+            <div class="col-span-2">
+              <h3 class="font-semibold text-lg mb-2">
+                <a href="#" class="text-blue-600 hover:underline">${service.title}</a>
+              </h3>
+              <div class="flex items-center gap-2 mb-2">
+                <div class="rating-stars text-sm">${stars}</div>
+                <span class="text-sm text-gray-600">(${service.reviews})</span>
+                ${service.trustSeal ? `
+                  <div class="trusted-seal bg-green-50 text-green-700 text-xs px-2 py-1 rounded flex items-center gap-1">
+                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                    </svg>
+                    TrustSEAL
+                  </div>
+                ` : ''}
+              </div>
+              <p class="font-medium text-gray-800 mb-1">${service.company}</p>
+              <p class="text-sm text-gray-600 mb-2">
+                <svg class="w-4 h-4 inline-block mr-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"/>
+                </svg>
+                ${service.location.city}${service.location.area ? `, ${service.location.area}` : ''}
+              </p>
+              <div class="flex items-center gap-2 text-xs mb-3">
+                ${service.gst ? '<span class="bg-gray-100 px-2 py-1 rounded">GST</span>' : ''}
+                ${service.email ? '<span class="bg-gray-100 px-2 py-1 rounded">Email</span>' : ''}
+                ${service.mobile ? '<span class="bg-gray-100 px-2 py-1 rounded">Mobile</span>' : ''}
+                <span class="text-gray-600">Member: ${service.memberSince}</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="text-xs text-green-700">${service.responseRate} Response Rate</div>
+                <div class="flex gap-2">
+                  <button class="bg-green-600 text-white px-3 py-1.5 rounded text-sm hover:bg-green-700">
+                    Contact Supplier
+                  </button>
+                  <button class="text-blue-600 text-sm hover:underline flex items-center">
+                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                    </svg>
+                    View Number
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Filter and display results
+    function performSearch() {
+      const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+      const location = document.getElementById('locationFilter').value;
+      const selectedServiceTypes = Array.from(document.querySelectorAll('input[name="serviceType"]:checked'))
+        .map(cb => cb.value);
+      const selectedBusinessTypes = Array.from(document.querySelectorAll('input[name="businessType"]:checked'))
+        .map(cb => cb.value);
+
+      const results = services.filter(service => {
+        const matchesSearch = !searchQuery || 
+          service.title.toLowerCase().includes(searchQuery) ||
+          service.description.some(d => d.toLowerCase().includes(searchQuery)) ||
+          service.features.some(f => f.toLowerCase().includes(searchQuery));
+        const matchesLocation = service.location === location;
+        const matchesServiceType = selectedServiceTypes.length === 0 || selectedServiceTypes.includes(service.type);
+        const matchesBusinessType = selectedBusinessTypes.length === 0 || selectedBusinessTypes.includes(service.businessType);
+
+        return matchesSearch && matchesLocation && matchesServiceType && matchesBusinessType;
+      });
+
+      const resultsContainer = document.getElementById('searchResults');
+      
+      if (results.length === 0) {
+        resultsContainer.innerHTML = `
+          <div class="col-span-2 text-center py-8 text-gray-600">
+            No results found. Try different filters or search terms.
+          </div>
+        `;
+        return;
+      }
+
+      resultsContainer.innerHTML = results.map(createResultCard).join('');
+    }
+
+    // Event listeners
+    document.querySelectorAll('input[type="checkbox"], select').forEach(input => {
+      input.addEventListener('change', performSearch);
+    });
+
+    document.getElementById('searchInput').addEventListener('keyup', function(e) {
+      if (e.key === 'Enter') {
+        performSearch();
+      }
+    });
+
+    // Initial search on page load
+    window.onload = function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const searchQuery = urlParams.get('q');
+      if (searchQuery) {
+        document.getElementById('searchInput').value = searchQuery;
+      }
+      performSearch();
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!-- Price Calculator Section -->
+<section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-blue-900 mb-4">Service Price Calculator</h2>
+                <p class="text-gray-600">Get an instant price estimate for our treatment plant services</p>
+            </div>
+
+            <!-- Calculator Form -->
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <form id="calculatorForm" class="space-y-6">
+                    <!-- Service Type -->
+                    <div>
+                        <label for="serviceType" class="block text-gray-700 font-medium mb-2">
+                            Select Service Type
+                        </label>
+                        <select id="serviceType" 
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">Choose a service...</option>
+                            <option value="wwtp">Waste Water Treatment Plant</option>
+                            <option value="stp">Sewage Treatment Plant</option>
+                            <option value="iets">Industrial Effluent Treatment System</option>
+                        </select>
+                    </div>
+
+                    <!-- Area Input -->
+                    <div>
+                        <label for="area" class="block text-gray-700 font-medium mb-2">
+                            Area (Square Meters)
+                        </label>
+                        <div class="relative">
+                            <input type="number" 
+                                   id="area" 
+                                   min="0"
+                                   step="1"
+                                   placeholder="Enter area in sq. meters"
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    </div>
+
+                    <!-- Calculate Button -->
+                    <button type="submit" 
+                            class="w-full bg-blue-900 text-white py-3 px-6 rounded-lg hover:bg-blue-800 transition-colors">
+                        Calculate Price
+                    </button>
+
+                    <!-- Result Display -->
+                    <div id="resultBox" class="hidden">
+                        <div class="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Price Estimate</h3>
+                            <div class="flex justify-between items-center">
+                                <div class="space-y-2">
+                                    <p class="text-gray-600" id="serviceDetail">-</p>
+                                    <p class="text-gray-600" id="areaDetail">-</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-2xl font-bold text-blue-900" id="priceResult">₹0</p>
+                                    <p class="text-sm text-gray-500">*Estimated price</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-sm text-gray-500">
+                            * This is an approximate estimate. Final price may vary based on specific requirements and site conditions.
+                            Contact us for a detailed quote.
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const calculatorForm = document.getElementById('calculatorForm');
+            const resultBox = document.getElementById('resultBox');
+            const serviceDetail = document.getElementById('serviceDetail');
+            const areaDetail = document.getElementById('areaDetail');
+            const priceResult = document.getElementById('priceResult');
+
+            // Price rates per square meter (can be easily modified)
+            const rates = {
+                'wwtp': 2500,  // Waste Water Treatment Plant
+                'stp': 3000,   // Sewage Treatment Plant
+                'iets': 3500   // Industrial Effluent Treatment System
+            };
+
+            // Service type display names
+            const serviceNames = {
+                'wwtp': 'Waste Water Treatment Plant',
+                'stp': 'Sewage Treatment Plant',
+                'iets': 'Industrial Effluent Treatment System'
+            };
+
+            calculatorForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const serviceType = document.getElementById('serviceType').value;
+                const area = parseFloat(document.getElementById('area').value);
+
+                // Validation
+                if (!serviceType || !area) {
+                    alert('Please fill in all fields');
+                    return;
+                }
+
+                if (area <= 0) {
+                    alert('Please enter a valid area');
+                    return;
+                }
+
+                // Calculate price
+                const ratePerSqM = rates[serviceType];
+                const totalPrice = ratePerSqM * area;
+
+                // Format price with Indian numbering system
+                const formattedPrice = new Intl.NumberFormat('en-IN', {
+                    style: 'currency',
+                    currency: 'INR',
+                    maximumFractionDigits: 0
+                }).format(totalPrice);
+
+                // Update result display
+                serviceDetail.textContent = `Service: ${serviceNames[serviceType]}`;
+                areaDetail.textContent = `Area: ${area} sq. meters`;
+                priceResult.textContent = formattedPrice;
+
+                // Show result box with animation
+                resultBox.classList.remove('hidden');
+                resultBox.scrollIntoView({ behavior: 'smooth' });
+            });
+
+            // Optional: Real-time validation
+            document.getElementById('area').addEventListener('input', function(e) {
+                if (e.target.value < 0) {
+                    e.target.value = 0;
+                }
+            });
+        });
+    </script>
+</section>
