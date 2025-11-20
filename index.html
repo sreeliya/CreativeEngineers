@@ -7,30 +7,34 @@
   <title>Creative Engineers | Home</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gray-50 text-gray-800">
+
+  <!-- HEADER -->
   <header class="bg-blue-900 text-white shadow">
     <div class="container mx-auto px-6 py-4">
       <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+
+        <!-- Logo -->
         <div class="flex items-center gap-4">
           <h1 class="text-2xl font-bold">Creative Engineers</h1>
-          <!-- Welcome message shown only for authenticated users -->
-          <div id="welcomeContainer" class="auth-user hidden text-sm text-white">
-            <span id="welcomeMsg"></span>
-          </div>
         </div>
-        
+
         <!-- Search Bar -->
         <div class="flex-1 max-w-3xl">
           <form action="search-results.html" method="get" class="flex gap-2" id="searchForm">
             <div class="flex-1 relative">
-              <input type="search" name="q" id="searchInput" 
-                     class="w-full px-4 py-2 text-gray-800 rounded-l-lg focus:outline-none"
-                     placeholder="Search wastewater treatment services..." required>
+              <input type="search" name="q" id="searchInput"
+                class="w-full px-4 py-2 text-gray-800 rounded-l-lg focus:outline-none"
+                placeholder="Search wastewater treatment services..." required>
               <div id="suggestions" class="hidden absolute w-full bg-white mt-1 rounded-lg shadow-lg z-50"></div>
             </div>
-            <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-r-lg hover:bg-green-700 flex items-center gap-2">
+
+            <button type="submit"
+              class="bg-green-600 text-white px-6 py-2 rounded-r-lg hover:bg-green-700 flex items-center gap-2">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
               <span>Search</span>
             </button>
@@ -45,74 +49,49 @@
           <a href="about.html" class="hover:text-gray-200">About</a>
           <a href="testimonials.html" class="hover:text-gray-200">Clients</a>
           <a href="contact.html" class="hover:text-gray-200">Contact</a>
-          <!-- Auth Links -->
-          <div id="authLinks">
-            <a href="login.html" class="auth-guest hover:text-gray-200">Login</a>
-            <a href="register.html" class="auth-guest hover:text-gray-200">Register</a>
-            <a href="#" class="auth-user hover:text-gray-200 hidden" onclick="logout()">Logout</a>
-          </div>
         </nav>
+
       </div>
     </div>
   </header>
 
+  <!-- HERO SECTION -->
   <section class="bg-blue-800 text-white text-center py-24">
     <h1 class="text-5xl font-bold mb-4">Water Treatment & Industrial Plant Solutions</h1>
     <p class="text-xl">Trusted Experts in ETP, STP, and RO Plant Design & Commissioning</p>
   </section>
 
+  <!-- SERVICES -->
   <section class="py-16 px-6 grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
     <div class="bg-white p-8 shadow-lg rounded-xl text-center">
       <h2 class="text-2xl font-semibold mb-2">ETP Plants</h2>
       <p>Effluent Treatment Plants designed for industrial waste management and sustainability.</p>
     </div>
+
     <div class="bg-white p-8 shadow-lg rounded-xl text-center">
       <h2 class="text-2xl font-semibold mb-2">STP Plants</h2>
       <p>Sewage Treatment Systems with advanced filtration for clean water reuse.</p>
     </div>
+
     <div class="bg-white p-8 shadow-lg rounded-xl text-center">
       <h2 class="text-2xl font-semibold mb-2">RO Systems</h2>
       <p>High-quality reverse osmosis solutions for commercial and industrial applications.</p>
     </div>
   </section>
 
+  <!-- CTA -->
   <section class="bg-blue-900 text-white py-12 text-center">
     <h3 class="text-2xl mb-4">Looking for a Custom Solution?</h3>
     <a href="contact.html" class="bg-white text-blue-900 font-semibold px-6 py-3 rounded hover:bg-gray-100">Get in Touch</a>
   </section>
 
+  <!-- FOOTER -->
   <footer class="bg-gray-900 text-gray-300 py-6 text-center mt-16">
     <p>© 2025 Creative Engineers, Vellore. All rights reserved.</p>
   </footer>
 
-  <script src="js/auth.js"></script>
+  <!-- Search Suggestions Script -->
   <script>
-    // Initialize auth state
-    document.addEventListener('DOMContentLoaded', () => {
-      const isAuthenticated = checkAuth();
-      const authUserElements = document.querySelectorAll('.auth-user');
-      const authGuestElements = document.querySelectorAll('.auth-guest');
-      
-      if (isAuthenticated) {
-        authUserElements.forEach(el => el.classList.remove('hidden'));
-        authGuestElements.forEach(el => el.classList.add('hidden'));
-        // Set welcome message from stored user info
-        try {
-          const user = JSON.parse(localStorage.getItem('user') || 'null');
-          if (user && user.username) {
-            const welcome = document.getElementById('welcomeMsg');
-            if (welcome) welcome.textContent = `Welcome, ${user.username}`;
-          }
-        } catch (e) {
-          console.warn('Could not parse stored user:', e);
-        }
-      } else {
-        authUserElements.forEach(el => el.classList.add('hidden'));
-        authGuestElements.forEach(el => el.classList.remove('hidden'));
-      }
-    });
-
-    // Sample suggestions data
     const suggestions = [
       'wastewater treatment plants services',
       'wastewater treatment plants maintenance',
@@ -126,22 +105,21 @@
 
     const input = document.getElementById('searchInput');
     const suggestionsDiv = document.getElementById('suggestions');
-    
-    input.addEventListener('input', function() {
+
+    input.addEventListener('input', function () {
       const query = this.value.toLowerCase().trim();
       if (query.length < 2) {
         suggestionsDiv.classList.add('hidden');
         return;
       }
 
-      const matches = suggestions.filter(s => 
+      const matches = suggestions.filter(s =>
         s.toLowerCase().includes(query)
       ).slice(0, 5);
 
       if (matches.length) {
         suggestionsDiv.innerHTML = matches.map(s => `
-          <div class="p-2 hover:bg-gray-100 cursor-pointer text-gray-800" 
-               onclick="selectSuggestion('${s}')">
+          <div class="p-2 hover:bg-gray-100 cursor-pointer text-gray-800" onclick="selectSuggestion('${s}')">
             ${s}
           </div>
         `).join('');
@@ -157,12 +135,12 @@
       document.getElementById('searchForm').submit();
     }
 
-    // Hide suggestions when clicking outside
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
       if (!input.contains(e.target) && !suggestionsDiv.contains(e.target)) {
         suggestionsDiv.classList.add('hidden');
       }
     });
   </script>
+
 </body>
 </html>

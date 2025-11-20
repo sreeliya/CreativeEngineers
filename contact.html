@@ -20,7 +20,7 @@
         <a href="about.html" class="hover:text-gray-200">About</a>
         <a href="testimonials.html" class="hover:text-gray-200">Clients</a>
         <a href="contact.html" class="hover:text-gray-200">Contact</a>
-        <a href="login.html" class="hover:text-gray-200">Login</a>
+        
       </nav>
     </div>
   </header>
@@ -41,7 +41,7 @@
       </div>
 
       <!-- Right Form -->
-      <form class="bg-white p-8 shadow rounded-xl" method="post" action="#" aria-label="Contact form">
+      <form id="contactForm" class="bg-white p-8 shadow rounded-xl" aria-label="Contact form">
         <label class="sr-only" for="name">Your Name</label>
         <input id="name" name="name" type="text" placeholder="Your Name" class="w-full mb-4 border p-3 rounded" required>
 
@@ -51,7 +51,12 @@
         <label class="sr-only" for="message">Your Message</label>
         <textarea id="message" name="message" rows="4" placeholder="Your Message" class="w-full mb-4 border p-3 rounded" required></textarea>
 
-        <button type="submit" class="bg-blue-900 text-white px-6 py-2 rounded hover:bg-blue-800">Send Message</button>
+        <button type="submit" class="bg-blue-900 text-white px-6 py-2 rounded hover:bg-blue-800 transition">
+          Send Message
+        </button>
+
+        <!-- Success/Error message -->
+        <p id="responseMsg" class="mt-4 text-sm font-medium"></p>
       </form>
 
     </div>
@@ -68,6 +73,43 @@
   <footer class="bg-gray-900 text-gray-300 py-6 text-center mt-16">
     <p>© 2025 Creative Engineers, Vellore. All rights reserved.</p>
   </footer>
+
+  <!-- JavaScript to connect with backend -->
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const form = e.target;
+      const responseMsg = document.getElementById("responseMsg");
+
+      // Collect form data
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+
+      try {
+        const res = await fetch("http://localhost:5000/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        const result = await res.json();
+
+        if (result.success) {
+          responseMsg.textContent = "✅ Message sent successfully!";
+          responseMsg.className = "mt-4 text-green-600 font-medium";
+          form.reset();
+        } else {
+          responseMsg.textContent = "⚠️ Failed to send message. Please try again.";
+          responseMsg.className = "mt-4 text-red-600 font-medium";
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        responseMsg.textContent = "❌ Server error. Please try again later.";
+        responseMsg.className = "mt-4 text-red-600 font-medium";
+      }
+    });
+  </script>
 
 </body>
 </html>
